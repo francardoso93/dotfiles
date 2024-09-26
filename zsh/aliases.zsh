@@ -20,3 +20,7 @@ killport () {
   PID=$(sudo lsof -t -i:$1)
   sudo kill -9 ${PID}
 }
+
+git-reset-soft-all() {
+  export TARGET_BRANCH=$(git rev-parse --abbrev-ref HEAD); git checkout main; git pull; git checkout $TARGET_BRANCH; git merge main; git reset --soft HEAD~$(git rev-list --left-right --count main...$TARGET_BRANCH | awk '{print $2}')
+}
