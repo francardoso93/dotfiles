@@ -1,3 +1,5 @@
+export DOTFILES=$HOME/dotfiles
+
 source_if_exists () {
     if test -r "$1"; then
         source "$1"
@@ -6,21 +8,36 @@ source_if_exists () {
 
 # Path to your Oh My Zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+
 export EDITOR=nvim
 
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
+
+# My aliases
 source_if_exists $DOTFILES/zsh/aliases.zsh
 
-export CC="gcc"
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Credential Store
+export CC="gcc"
 export GCM_CREDENTIAL_STORE=gpg
 export AWS_CSM_ENABLED=true
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-# asdf Go
-export GOROOT="$(asdf where golang)/go"
-export PATH=$PATH:$HOME/.asdf/installs/golang/1.22.4/packages/bin
+
+# ASDF
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
+# ASDF Go
+# export GOROOT="$(asdf where golang)/go"
+# export PATH=$PATH:$HOME/.asdf/installs/golang/1.22.4/packages/bin
 # Pulumi
 export PATH=$PATH:/home/francisco/.pulumi/bin
 # Istioctl
