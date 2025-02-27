@@ -36,7 +36,7 @@ asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
 # ASDF Go
-# export GOROOT="$(asdf where golang)/go"
+. ~/.asdf/plugins/golang/set-env.zsh
 # export PATH=$PATH:$HOME/.asdf/installs/golang/1.22.4/packages/bin
 # Pulumi
 export PATH=$PATH:/home/francisco/.pulumi/bin
@@ -46,6 +46,7 @@ export PATH=$PATH:$HOME/.istioctl/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$PATH:$VOLTA_HOME/bin"
 export PATH="$PATH:~/.volta/bin"
+export VOLTA_FEATURE_PNPM=1
 
 # Add stuff that you want hot reload for every command. Ex: Importing an aliases file
 # precmd() {

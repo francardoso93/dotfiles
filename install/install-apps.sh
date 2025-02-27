@@ -65,10 +65,8 @@ tar zxvf "$ASDF_BINARY_FILE"
 sudo mv asdf /usr/local/bin/
 asdf --version
 # ASDF Node
-asdf plugin-add nodejs
-bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
-asdf global nodejs latest
 node -v
 # # # ASDF Java
 # # asdf plugin-add java https://github.com/halcyon/asdf-java.git
@@ -77,11 +75,10 @@ node -v
 # # echo -e '\n. $HOME/.asdf/plugins/java/set-java-home.zsh' >> ~/.zshrc
 # # echo -e '\n. $HOME/.asdf/plugins/java/set-java-home.bash' >> ~/.bashrc
 # # ASDF Go
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 asdf install golang latest
-asdf global golang latest
-echo -e '\nexport GOROOT="$(asdf where golang)/go/"' >> ~/.zshrc
-echo -e '\nexport CC="gcc"' >> ~/.zshrc
+# echo -e '\nexport GOROOT="$(asdf where golang)/go/"' >> ~/.zshrc
+# echo -e '\nexport CC="gcc"' >> ~/.zshrc
 # Ruby
 # sudo apt-get install ruby-full -y
 # sudo gem install bundler
@@ -111,10 +108,10 @@ sudo ./aws/install
 # # sudo add-apt-repository ppa:peek-developers/stable
 # # sudo apt-get update
 # # sudo apt-get install peek -y
-# # OBS (Video Recorder)
-# sudo add-apt-repository ppa:pbsproject/obs-studio
-# sudo apt-get update
-# sudo apt-get install obs-studio -y
+# OBS (Video Recorder)
+sudo add-apt-repository ppa:pbsproject/obs-studio
+sudo apt-get update
+sudo apt-get install obs-studio -y
 # # OpenShot (Video Editor)
 # # sudo add-apt-repository ppa:openshot.developers/ppa
 # # sudo apt-get update
@@ -253,6 +250,10 @@ NEOVIM_BINARY_FILE=nvim-linux-x86_64.tar.gz
 curl -sLO https://github.com/neovim/neovim/releases/latest/download/$NEOVIM_BINARY_FILE
 tar zxvf "$NEOVIM_BINARY_FILE"
 sudo mv nvim-linux-x86_64/bin/nvim /usr/local/bin/
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# htop
+sudo apt install htop -y
 
 # Wireshark
 # sudo add-apt-repository ppa:wireshark-dev/stable
