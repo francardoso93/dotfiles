@@ -4,6 +4,10 @@ alias ac='eval $(sonder config aws)'
 alias vim=nvim
 
 # k8s aliases
+alias kd1='k --context "sonder-dev-1/kube-admin"'
+alias kd1-stern='k stern --context "sonder-dev-1/kube-admin"'
+alias kd3='k --context "sonder-dev-3/kube-admin"'
+alias kd3-stern='k stern --context "sonder-dev-3/kube-admin"'
 alias ks1='k --context "sonder-staging-1/kube-admin"'
 alias ks1-stern='k stern --context "sonder-staging-1/kube-admin"'
 alias ks3='k --context "sonder-staging-3/kube-admin"'
