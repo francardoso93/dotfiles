@@ -77,6 +77,7 @@ node -v
 # # ASDF Go
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 asdf install golang latest
+sudo apt install gcc
 # echo -e '\nexport GOROOT="$(asdf where golang)/go/"' >> ~/.zshrc
 # echo -e '\nexport CC="gcc"' >> ~/.zshrc
 # Ruby
