@@ -12,7 +12,7 @@ ZSH_THEME="robbyrussell"
 
 export EDITOR=nvim
 
-plugins=(git)
+plugins=(git kube-ps1)
 source $ZSH/oh-my-zsh.sh
 
 # My aliases
@@ -47,8 +47,9 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$PATH:$VOLTA_HOME/bin"
 export PATH="$PATH:~/.volta/bin"
 export VOLTA_FEATURE_PNPM=1
+# Kube-ps1
+PROMPT='$(kube_ps1)'$PROMPT # or # RPROMPT='$(kube_ps1)' # type kubeoff to temporarily disable
 
-# Add stuff that you want hot reload for every command. Ex: Importing an aliases file
-# precmd() {
-
-# }
+# Add stuff that you want hot reload for every command.
+precmd() {
+}
