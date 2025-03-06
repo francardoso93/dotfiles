@@ -18,6 +18,8 @@ source $ZSH/oh-my-zsh.sh
 # My aliases
 source_if_exists $DOTFILES/zsh/aliases.zsh
 
+source_if_exists $HOME/testenvars.zsh # This file should not be committed
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

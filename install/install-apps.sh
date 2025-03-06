@@ -78,6 +78,7 @@ node -v
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 asdf install golang latest
 sudo apt install gcc
+go install -v github.com/go-delve/delve/cmd/dlv@latest
 # echo -e '\nexport GOROOT="$(asdf where golang)/go/"' >> ~/.zshrc
 # echo -e '\nexport CC="gcc"' >> ~/.zshrc
 # Ruby
@@ -136,10 +137,6 @@ sudo apt-get install pgcli
 echo -e '\nexport PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> ~/.zshrc
 echo -e '\nexport PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
-# stern
-kubectl krew install stern
-# # kubens
-kubectl krew install ns
 # Kube PS1 (to show current context and ns) need to be done manually, but easy. See: https://github.com/jonmosco/kube-ps1sudo 
 # k6
 # sudo gpg -k
@@ -217,21 +214,13 @@ curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/lat
 sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
 argocd version
-# # Difftastic
-# curl -sLO https://github.com/Wilfred/difftastic/releases/download/0.60.0/difft-x86_64-unknown-linux-gnu.tar.gz
-# tar -xvzf difft-x86_64-unknown-linux-gnu.tar.gz
-# chmod +x difft
-# sudo mv ./difft /usr/local/bin/
-# difft
-# Must Fix# Nushell
-# sudo apt install pkg-config libssl-dev build-essential
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# source ~/.bashrc
-# rustup install 1.80.1
-# cargo install nu
-# wher
-# https://github.com/awslabs/amazon-ecr-credential-helper
+# Nushell
+curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/fury-nushell.gpg
+echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
+sudo apt update
+sudo apt install nushell
 # ECR credential helper # Needed for Skopeo + ECR login # https://github.com/containers/skopeo/issues/1798#issuecomment-1296309392
+# https://github.com/awslabs/amazon-ecr-credential-helper
 sudo apt update -y
 sudo apt install amazon-ecr-credential-helper -y
 # Skopeo
@@ -247,14 +236,19 @@ wget https://github.com/derailed/k9s/releases/download/v0.40.5/k9s_linux_amd64.d
 sudo apt install ./k9s_linux_amd64.deb -y
 rm k9s_linux_amd64.deb
 # Neovim
-NEOVIM_BINARY_FILE=nvim-linux-x86_64.tar.gz
-curl -sLO https://github.com/neovim/neovim/releases/latest/download/$NEOVIM_BINARY_FILE
-tar zxvf "$NEOVIM_BINARY_FILE"
+NEOVIM_FILE=nvim-linux-x86_64.tar.gz
+curl -sLO https://github.com/neovim/neovim/releases/latest/download/$NEOVIM_FILE
+tar zxvf "$NEOVIM_FILE"
 sudo mv nvim-linux-x86_64/bin/nvim /usr/local/bin/
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 # htop
 sudo apt install htop -y
+
+# stern
+kubectl krew install stern
+# # kubens
+kubectl krew install ns
 
 # Wireshark
 # sudo add-apt-repository ppa:wireshark-dev/stable
