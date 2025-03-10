@@ -52,6 +52,9 @@ export VOLTA_FEATURE_PNPM=1
 # Kube-ps1
 PROMPT='$(kube_ps1)'$PROMPT # or # RPROMPT='$(kube_ps1)' # type kubeoff to temporarily disable
 
+# export local home path
+export PATH="/home/$(whoami)/.local/bin:$PATH"
+
 # Add stuff that you want hot reload for every command.
 precmd() {
 }
