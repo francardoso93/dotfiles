@@ -261,4 +261,4 @@ kubectl krew install ns
 
 # pip
 sudo apt update
-sudo apt install python-pip 
+sudo apt install python3-pip 
