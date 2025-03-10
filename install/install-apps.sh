@@ -260,4 +260,5 @@ kubectl krew install ns
 ### TODO: I could move this entire script there.
 
 # pipx
+sudo apt install python3.12-venv
 python3 -m pip install --break-system-packages --user pipx 
