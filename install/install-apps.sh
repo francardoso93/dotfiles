@@ -259,6 +259,5 @@ kubectl krew install ns
 ### TODO: Will have to move several things that are adding directly to .ZSHRC file to dotfiles instead
 ### TODO: I could move this entire script there.
 
-# pip
-sudo apt update
-sudo apt install python3-pip 
+# pipx
+python3 -m pip install --break-system-packages --user pipx 
