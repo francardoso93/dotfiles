@@ -26,6 +26,9 @@ source_if_exists $HOME/testenvars.zsh # This file should not be committed
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# kubectl completion
+source <(kubectl completion zsh)
+
 # Credential Store
 export CC="gcc"
 export GCM_CREDENTIAL_STORE=gpg
