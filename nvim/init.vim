@@ -293,7 +293,7 @@ nnoremap <space>el :CocList explPresets
 " LUA configure nvim-lspconfig
 lua << EOF
 require'lspconfig'.pyright.setup{}
-require'lspconfig'.tsserver.setup{
+require'lspconfig'.ts_ls.setup{
   cmd = { "/usr/local/bin/typescript-language-server", "--stdio" }
 }
 
