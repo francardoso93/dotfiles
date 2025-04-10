@@ -1,3 +1,8 @@
+" Put plugins and dictionaries in this directory
+let vimDir = expand('$XDG_CONFIG_HOME/nvim')
+let vimPlugFile = vimDir . '/autoload/plug.vim'
+
+" Install vim-plug if not present
 call plug#begin()
     Plug 'sainnhe/sonokai'
     Plug 'vim-airline/vim-airline'
@@ -22,7 +27,7 @@ call plug#begin()
         Plug 'ray-x/navigator.lua'
         Plug 'akinsho/toggleterm.nvim'
         Plug 'lukas-reineke/indent-blankline.nvim'
-        Plug 'vim-tree/nvim-web-devicons'
+        Plug 'nvim-tree/nvim-web-devicons'
         Plug 'folke/trouble.nvim'
     endif
 call plug#end()

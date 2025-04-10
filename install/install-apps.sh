@@ -236,15 +236,10 @@ wget https://github.com/derailed/k9s/releases/download/v0.40.5/k9s_linux_amd64.d
 sudo apt install ./k9s_linux_amd64.deb -y
 rm k9s_linux_amd64.deb
 # Neovim
-NEOVIM_FILE=nvim-linux-x86_64.tar.gz
-curl -sLO https://github.com/neovim/neovim/releases/latest/download/$NEOVIM_FILE
-tar zxvf "$NEOVIM_FILE"
-sudo mv nvim-linux-x86_64/bin/nvim /usr/local/bin/
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+asdf plugin add neovim 
+asdf install neovim 0.11.0
 # htop
 sudo apt install htop -y
-
 # stern
 kubectl krew install stern
 # # kubens
