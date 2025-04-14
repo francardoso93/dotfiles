@@ -49,7 +49,6 @@ sudo apt install zsh -y
 sudo apt-get install powerline fonts-powerline -y
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-chsh -s /bin/zsh
 # Terminator
 sudo add-apt-repository ppa:gnome-terminator/nightly
 sudo apt-get update
@@ -219,6 +218,7 @@ curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/
 echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
 sudo apt update
 sudo apt install nushell
+chsh -s /usr/bin/nu
 # ECR credential helper # Needed for Skopeo + ECR login # https://github.com/containers/skopeo/issues/1798#issuecomment-1296309392
 # https://github.com/awslabs/amazon-ecr-credential-helper
 sudo apt update -y
