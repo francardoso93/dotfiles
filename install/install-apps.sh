@@ -218,7 +218,7 @@ curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/
 echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
 sudo apt update
 sudo apt install nushell
-chsh -s /usr/bin/nu
+chsh -s /bin/nu
 # ECR credential helper # Needed for Skopeo + ECR login # https://github.com/containers/skopeo/issues/1798#issuecomment-1296309392
 # https://github.com/awslabs/amazon-ecr-credential-helper
 sudo apt update -y
