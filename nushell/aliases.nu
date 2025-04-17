@@ -1,6 +1,10 @@
 
 alias rm = rm -i
 alias vim = nvim
+def ac [] {
+  let config = (sonder config aws)
+  eval $config
+}
 
 # k8s aliases
 alias k = kubectl
