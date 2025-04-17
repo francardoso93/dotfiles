@@ -52,7 +52,8 @@ $env.PATH = ( $env.PATH | append ~/.cargo/bin )
 $env.NU_PLUGIN_DIRS = ( $env.NU_PLUGIN_DIRS | append ~/.cargo/bin )
 source "~/.cargo/env.nu"
 
-# TODO: Manually run: plugin add nu_plugin_gstat
+# TODO: Manually run: 
+plugin add nu_plugin_gstat
 
 use "~/dotfiles/nushell/modules/prompt/oh-my.nu" git_prompt
 $env.PROMPT_COMMAND = { (git_prompt).left_prompt }

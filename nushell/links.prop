@@ -1,1 +1,2 @@
 $DOTFILES/nushell/config.nu=$HOME/.config/nushell/config.nu
+$DOTFILES/nushell/env.nu=$HOME/.config/nushell/env.nu
