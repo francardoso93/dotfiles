@@ -30,7 +30,7 @@ let shims_dir = (
   } | path join 'shims'
 )
 
-$env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | prepend $shims_dir )
+$env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | append $shims_dir )
 # asdf completion nushell | save $"($env.HOME)/.asdf/completions/nushell.nu"
 
 let asdf_data_dir = (
@@ -41,9 +41,9 @@ let asdf_data_dir = (
   }
 )
 # . "$asdf_data_dir/completions/nushell.nu"
+
 ### FZF
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.fzf/bin' )
-
 ###
 
 ### Aliases
