@@ -29,8 +29,9 @@ let shims_dir = (
     $env.ASDF_DATA_DIR
   } | path join 'shims'
 )
+
 $env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | prepend $shims_dir )
-asdf completion nushell | save $"($env.HOME)/.asdf/completions/nushell.nu"
+# asdf completion nushell | save $"($env.HOME)/.asdf/completions/nushell.nu"
 
 let asdf_data_dir = (
   if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
@@ -39,8 +40,21 @@ let asdf_data_dir = (
     $env.ASDF_DATA_DIR
   }
 )
-. "$asdf_data_dir/completions/nushell.nu"
+# . "$asdf_data_dir/completions/nushell.nu"
 ###
 
- # Couldn't get source to work with prefix $env.DOTFILES. "Not a constant" error
+# Couldn't get source to work with prefix $env.DOTFILES. "Not a constant" error
 source ~/dotfiles/nushell/aliases.nu 
+
+## Plugins
+
+$env.PATH = ( $env.PATH | append ~/.cargo/bin )
+$env.NU_PLUGIN_DIRS = ( $env.NU_PLUGIN_DIRS | append ~/.cargo/bin )
+source "~/.cargo/env.nu"
+
+# TODO: Manually run: plugin add nu_plugin_gstat
+
+use "~/dotfiles/nushell/modules/prompt/oh-my.nu" git_prompt
+$env.PROMPT_COMMAND = { (git_prompt).left_prompt }
+$env.PROMPT_COMMAND_RIGHT = { (git_prompt).right_prompt }
+$env.PROMPT_INDICATOR = " "

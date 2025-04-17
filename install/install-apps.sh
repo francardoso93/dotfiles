@@ -1,3 +1,4 @@
+### TODO: Will have to move several things that are adding directly to .rc.zsh dotfiles file instead
 # #GIT
 sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
@@ -48,7 +49,7 @@ helm plugin install https://github.com/databus23/helm-diff
 sudo apt install zsh -y
 sudo apt-get install powerline fonts-powerline -y
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc ## TODO: This can probably go away safely
 # Terminator
 sudo add-apt-repository ppa:gnome-terminator/nightly
 sudo apt-get update
@@ -213,12 +214,6 @@ curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/lat
 sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
 argocd version
-# Nushell
-curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/fury-nushell.gpg
-echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
-sudo apt update
-sudo apt install nushell
-chsh -s /bin/nu
 # ECR credential helper # Needed for Skopeo + ECR login # https://github.com/containers/skopeo/issues/1798#issuecomment-1296309392
 # https://github.com/awslabs/amazon-ecr-credential-helper
 sudo apt update -y
@@ -244,16 +239,25 @@ sudo apt install htop -y
 kubectl krew install stern
 # # kubens
 kubectl krew install ns
-
 # Wireshark
 # sudo add-apt-repository ppa:wireshark-dev/stable
 # sudo apt-get update
 # sudo apt-get install wireshark -y
 # TODO: silver-surfer (About cluster updates, let's test it)
-
-### TODO: Will have to move several things that are adding directly to .ZSHRC file to dotfiles instead
-### TODO: I could move this entire script there.
-
 # pipx
 sudo apt install python3.12-venv
-python3 -m pip install --break-system-packages --user pipx 
+python3 -m pip install --break-system-packages --user pipx
+# Rust / Cargo (required for nu plugins)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
+rustup update stable
+# Nushell
+curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/fury-nushell.gpg
+echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
+sudo apt update
+sudo apt install nushell
+chsh -s /bin/nu
+# nu plugins
+sudo apt install cargo
+sudo apt install pkg-config
+cargo install nu_plugin_gstat
