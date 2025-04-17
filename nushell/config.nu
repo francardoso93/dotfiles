@@ -69,9 +69,13 @@ plugin add nu_plugin_gstat
 
 ## TODO: Move this to module"
 def kube_prompt [] {
+  let cmd = (history | last 1 | get command.0 | default "")
+  if ($cmd | str starts-with 'k') {
     let k_prompt =  ([(kubectl ctx -c), (kubectl ns -c)] | str trim | str join '/')
-    let d_prompt = ([(date now | format date '%r')] | str join)
-    $"\(($k_prompt)\) ($d_prompt)"
+    $"(ansi yellow)($k_prompt)(ansi reset)"
+  } else {
+    ""
+  }
 }
 
 use "~/dotfiles/nushell/modules/prompt/oh-my.nu" git_prompt
