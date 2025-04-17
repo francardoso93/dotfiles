@@ -46,6 +46,10 @@ let asdf_data_dir = (
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.fzf/bin' )
 ###
 
+### Krew
+$env.PATH = ( $env.PATH | split row (char esep) | append '~/.krew/bin' )
+###
+
 ### Aliases
 # Couldn't get source to work with prefix $env.DOTFILES. "Not a constant" error
 source ~/dotfiles/nushell/aliases.nu 
@@ -63,8 +67,15 @@ plugin add nu_plugin_gstat
 
 ### Prompt
 
+## TODO: Move this to module"
+def kube_prompt [] {
+    let k_prompt =  ([(kubectl ctx -c), (kubectl ns -c)] | str trim | str join '/')
+    let d_prompt = ([(date now | format date '%r')] | str join)
+    $"\(($k_prompt)\) ($d_prompt)"
+}
+
 use "~/dotfiles/nushell/modules/prompt/oh-my.nu" git_prompt
 $env.PROMPT_COMMAND = { (git_prompt).left_prompt }
-$env.PROMPT_COMMAND_RIGHT = { (git_prompt).right_prompt }
+$env.PROMPT_COMMAND_RIGHT = { kube_prompt }
 $env.PROMPT_INDICATOR = " "
 ###

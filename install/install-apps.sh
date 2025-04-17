@@ -237,6 +237,8 @@ asdf install neovim 0.11.0
 sudo apt install htop -y
 # stern
 kubectl krew install stern
+# # kubectx
+kubectl krew install ctx
 # # kubens
 kubectl krew install ns
 # Wireshark
