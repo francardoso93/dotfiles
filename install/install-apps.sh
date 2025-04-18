@@ -192,6 +192,7 @@ echo -e '\nexport PATH=$HOME/.istioctl/bin:$PATH' >> ~/.zshrc
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf/
 ./install
+cd ~
 # jq
 sudo apt-get install jq
 # rpgrep - search for words in file
@@ -263,3 +264,8 @@ chsh -s /bin/nu
 sudo apt install cargo
 sudo apt install pkg-config
 cargo install nu_plugin_gstat
+# nerdfonts
+mkdir ~/.fonts/FiraCode
+cd ~/.fonts/FiraCode
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz
+tar -xf FiraCode.tar.xz
