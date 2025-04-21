@@ -21,6 +21,9 @@ $env.EDITOR = "nvim"
 
 $env.DOTFILES = $"($env.HOME)/dotfiles"
 
+### Aliases
+source ~/dotfiles/nushell/aliases.nu 
+
 ### ASDF
 let shims_dir = (
   if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
@@ -44,14 +47,12 @@ let asdf_data_dir = (
 
 ### FZF
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.fzf/bin' )
-###
 
 ### Krew
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.krew/bin' )
-###
 
-### Aliases
-source ~/dotfiles/nushell/aliases.nu 
+### k8s 
+use "~/dotfiles/nushell/scripts/k8s-complete.nu" *
 
 ### Plugins
 
