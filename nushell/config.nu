@@ -51,6 +51,9 @@ $env.PATH = ( $env.PATH | split row (char esep) | append '~/.fzf/bin' )
 ### Krew
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.krew/bin' )
 
+# Pulumi
+$env.PATH = ( $env.PATH | split row (char esep) | append '~/.pulumi/bin' )
+
 ### k8s 
 use "~/dotfiles/nushell/modules/k8s/kube-prompt.nu" kube_prompt
 
@@ -71,4 +74,3 @@ plugin add nu_plugin_gstat
 $env.PROMPT_COMMAND = { $"((git_prompt).left_prompt) (kube_prompt)" }
 $env.PROMPT_COMMAND_RIGHT = { (git_prompt).right_prompt }
 $env.PROMPT_INDICATOR = "\n"
-
