@@ -52,23 +52,25 @@ $env.PATH = ( $env.PATH | split row (char esep) | append '~/.fzf/bin' )
 $env.PATH = ( $env.PATH | split row (char esep) | append '~/.krew/bin' )
 
 ### k8s 
-use "~/dotfiles/nushell/scripts/k8s-complete.nu" *
+
+
+### Git Module
+use "~/dotfiles/nushell/modules/git/git.nu" *
+
+### Linux Module
+use "~/dotfiles/nushell/modules/linux/network.nu" *
 
 ### Plugins
-
 $env.PATH = ( $env.PATH | append ~/.cargo/bin )
 $env.NU_PLUGIN_DIRS = ( $env.NU_PLUGIN_DIRS | append ~/.cargo/bin )
 source "~/.cargo/env.nu"
-
 plugin add nu_plugin_gstat
 
-###
 
 ### Prompt
-
-use "~/dotfiles/nushell/modules/prompt/oh-my.nu" git_prompt
-use "~/dotfiles/nushell/modules/prompt/kube-prompt.nu" kube_prompt
+use "~/dotfiles/nushell/modules/git/oh-my.nu" git_prompt
+use "~/dotfiles/nushell/modules/k8s/kube-prompt.nu" kube_prompt
 $env.PROMPT_COMMAND = { $"((git_prompt).left_prompt) (kube_prompt)" }
 $env.PROMPT_COMMAND_RIGHT = { (git_prompt).right_prompt }
 $env.PROMPT_INDICATOR = "\n"
-###
+
