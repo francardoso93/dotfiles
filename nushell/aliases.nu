@@ -23,3 +23,4 @@ alias kp3-stern = k stern --context "sonder-prod-3/kube-admin"
 alias ki2 = k --context "sonder-infra-2/kube-admin" 
 alias ki2-stern = k stern --context "sonder-infra-2/kube-admin" 
 alias dotfiles = code ~/dotfiles
+alias aws = sonder aws console
