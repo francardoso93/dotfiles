@@ -1,6 +1,7 @@
 " Put plugins and dictionaries in this directory
 let vimDir = expand('$XDG_CONFIG_HOME/nvim')
 let vimPlugFile = vimDir . '/autoload/plug.vim'
+let g:python3_host_prog = '/home/francisco/.venvs/neovim/bin/python'
 
 " Install vim-plug if not present
 call plug#begin()

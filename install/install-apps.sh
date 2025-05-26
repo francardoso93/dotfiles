@@ -232,6 +232,9 @@ wget https://github.com/derailed/k9s/releases/download/v0.40.5/k9s_linux_amd64.d
 sudo apt install ./k9s_linux_amd64.deb -y
 rm k9s_linux_amd64.deb
 # Neovim
+python3 -m venv ~/.venvs/neovim
+source ~/.venvs/neovim/bin/activate
+pip install pynvim
 asdf plugin add neovim 
 asdf install neovim 0.11.0
 # htop
