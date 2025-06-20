@@ -6,6 +6,17 @@ def ac [] {
   eval $config
 }
 
+def git-push-empty [] {
+  git commit --allow-empty -m "empty commit"
+  git push
+} 
+
+# def dotfiles [] {
+#   cd ~/dotfiles
+#   nvim .
+# }
+alias dotfiles = code ~/dotfiles
+
 # k8s aliases
 alias k = kubectl
 alias kd1 = k --context "sonder-dev-1/kube-admin" 
@@ -22,5 +33,7 @@ alias kp3 = k --context "sonder-prod-3/kube-admin"
 alias kp3-stern = k stern --context "sonder-prod-3/kube-admin" 
 alias ki2 = k --context "sonder-infra-2/kube-admin" 
 alias ki2-stern = k stern --context "sonder-infra-2/kube-admin" 
-alias dotfiles = code ~/dotfiles
-alias aws = sonder aws console
+alias aws-web = sonder aws console
+alias sonder-beta = /home/francisco/projects/sonder-cli/sonder-cli
+
+  

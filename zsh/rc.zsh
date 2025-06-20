@@ -42,6 +42,7 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
 # ASDF Go
 . ~/.asdf/plugins/golang/set-env.zsh
+export GOPRIVATE="github.com/flatbook"
 # export PATH=$PATH:$HOME/.asdf/installs/golang/1.22.4/packages/bin
 # Pulumi
 export PATH=$PATH:/home/francisco/.pulumi/bin

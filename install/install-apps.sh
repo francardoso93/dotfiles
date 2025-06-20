@@ -266,7 +266,7 @@ chsh -s /bin/nu
 # nu plugins
 sudo apt install cargo
 sudo apt install pkg-config
-cargo install nu_plugin_gstat
+cargo install nu_plugin_gstat # Run this again when Nu auto updates and plugin stops working
 # nerdfonts
 mkdir ~/.fonts/FiraCode
 cd ~/.fonts/FiraCode
