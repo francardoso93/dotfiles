@@ -11,6 +11,17 @@ def git-push-empty [] {
   git push
 } 
 
+
+# Finds a process by port and kills it
+def killport [port:int] {
+  let pid = (sudo lsof -t -i:$port | str trim)
+  if $pid != "" {
+    sudo kill -9 $pid
+  } else {
+    print "No process found on port $port"
+  }
+}
+
 # def dotfiles [] {
 #   cd ~/dotfiles
 #   nvim .
