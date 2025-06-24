@@ -14,9 +14,9 @@ def git-push-empty [] {
 
 # Finds a process by port and kills it
 def killport [port:int] {
-  let pid = (sudo lsof -t -i:$port | str trim)
-  if $pid != "" {
-    sudo kill -9 $pid
+  let pid = (lsof -t -i:($port) | str trim | into int)
+  if $pid != null {
+    kill $pid
   } else {
     print "No process found on port $port"
   }
