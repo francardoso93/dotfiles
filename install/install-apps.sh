@@ -173,6 +173,7 @@ pass init "Francisco" # After that, you can clone a private repo using https wit
 && sudo apt update \
 && sudo apt install gh -y
 gh auth login
+gh extension install github/gh-copilot
 # Sonder CLI (Must be done after gh auth)
 gh release download v2.2.0 -R Flatbook/sonder-cli --pattern "*linux_amd64.tar.gz"
 tar zxvf sonder_2.2.0_linux_amd64.tar.gz
