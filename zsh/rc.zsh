@@ -15,6 +15,9 @@ export EDITOR=nvim
 plugins=(git kube-ps1)
 source $ZSH/oh-my-zsh.sh
 
+# ZSH Auto Suggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # My aliases
 source_if_exists $DOTFILES/zsh/aliases.zsh
 
@@ -26,8 +29,10 @@ source_if_exists $HOME/testenvars.zsh # This file should not be committed
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# kubectl completion
+# Completions
 source <(kubectl completion zsh)
+source <(sonder completion zsh)
+source <(helm completion zsh)
 
 # Credential Store
 export CC="gcc"
@@ -39,7 +44,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
 asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-autoload -Uz compinit && compinit
 # ASDF Go
 . ~/.asdf/plugins/golang/set-env.zsh
 export GOPRIVATE="github.com/flatbook"
@@ -59,6 +63,13 @@ PROMPT='$(kube_ps1)'$PROMPT # or # RPROMPT='$(kube_ps1)' # type kubeoff to tempo
 # export local home path
 export PATH="/home/$(whoami)/.local/bin:$PATH"
 
+# Ruby rbenv
+export PATH="$HOME/.rbenv/versions/2.7.8/bin:$PATH"
+
+# Enable autocompletion
+autoload -Uz compinit && compinit
+
 # Add stuff that you want hot reload for every command.
 precmd() {
 }
+

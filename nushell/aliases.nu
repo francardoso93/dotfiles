@@ -1,6 +1,5 @@
 
 alias rm = rm -i
-alias vim = nvim
 def ac [] {
   let config = (sonder config aws)
   eval $config
@@ -47,4 +46,6 @@ alias ki2-stern = k stern --context "sonder-infra-2/kube-admin"
 alias aws-web = sonder aws console
 alias sonder-beta = /home/francisco/projects/sonder-cli/sonder-cli
 
-  
+# AI aliases
+alias ghcs = gh copilot suggest
+alias ghce = gh copilot explain

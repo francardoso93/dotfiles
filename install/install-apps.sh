@@ -50,6 +50,8 @@ sudo apt install zsh -y
 sudo apt-get install powerline fonts-powerline -y
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc ## TODO: This can probably go away safely
+# ZSH Auto Suggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 # Terminator
 sudo add-apt-repository ppa:gnome-terminator/nightly
 sudo apt-get update
@@ -82,8 +84,9 @@ go install -v github.com/go-delve/delve/cmd/dlv@latest
 # echo -e '\nexport GOROOT="$(asdf where golang)/go/"' >> ~/.zshrc
 # echo -e '\nexport CC="gcc"' >> ~/.zshrc
 # Ruby
-# sudo apt-get install ruby-full -y
-# sudo gem install bundler
+sudo apt install libtool libffi-dev
+sudo apt-get install ruby-full -y
+sudo gem install bundler
 # Terraform
 asdf plugin add terraform
 asdf install terraform latest
