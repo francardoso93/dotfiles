@@ -29,11 +29,6 @@ source_if_exists $HOME/testenvars.zsh # This file should not be committed
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# Completions
-source <(kubectl completion zsh)
-source <(sonder completion zsh)
-source <(helm completion zsh)
-
 # Credential Store
 export CC="gcc"
 export GCM_CREDENTIAL_STORE=gpg
@@ -65,6 +60,13 @@ export PATH="/home/$(whoami)/.local/bin:$PATH"
 
 # Ruby rbenv
 export PATH="$HOME/.rbenv/versions/2.7.8/bin:$PATH"
+
+# Completions
+source <(kubectl completion zsh)
+source <(kubectl-ai completion zsh)
+source <(sonder completion zsh)
+source <(helm completion zsh)
+source <(pulumi gen-completion zsh)
 
 # Enable autocompletion
 autoload -Uz compinit && compinit

@@ -249,6 +249,8 @@ kubectl krew install stern
 kubectl krew install ctx
 # # kubens
 kubectl krew install ns
+# kubectl-ai
+kubectl krew install ai
 # Wireshark
 # sudo add-apt-repository ppa:wireshark-dev/stable
 # sudo apt-get update
