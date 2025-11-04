@@ -1,6 +1,7 @@
 alias k="kubectl"
 alias rm="rm -i"
 alias ac='eval $(sonder config aws)'
+alias dotfiles='nvim ~/dotfiles'
 
 # k8s aliases
 alias kd1='k --context "sonder-dev-1/kube-admin"'
